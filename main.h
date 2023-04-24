@@ -26,6 +26,10 @@ int print_char(va_list args);
 int print_string(va_list args);
 int print_percent(va_list args);
 
+/* Function for printing decimals */
+int print_decimal(va_list args);
+
+
 /* Functions for printing integers */
 int print_int(va_list args);
 int print_integer(va_list args);
