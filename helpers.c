@@ -155,3 +155,93 @@ int print_binary(va_list args)
 
     return (i);
 }
+
+/**
+ * print_unsigned_integer - prints an unsigned integer in base 10
+ * @args: the va_list that contains the unsigned integer
+ *
+ * Return: the number of digits printed
+ */
+int print_unsigned_integer(va_list args)
+{
+    unsigned int n = va_arg(args, unsigned int);
+    int digits = 0;
+
+    if (n / 10)
+    {
+        digits += print_unsigned_integer(args);
+    }
+
+    _putchar((n % 10) + '0');
+    digits++;
+
+    return (digits);
+}
+
+/**
+ * print_octal - prints an unsigned integer in base 8 (octal)
+ * @args: the va_list that contains the unsigned integer
+ *
+ * Return: the number of digits printed
+ */
+int print_octal(va_list args)
+{
+    unsigned int n = va_arg(args, unsigned int);
+    int digits = 0;
+
+    if (n / 8)
+    {
+        digits += print_octal(args);
+    }
+
+    _putchar((n % 8) + '0');
+    digits++;
+
+    return (digits);
+}
+
+/**
+ * print_hexadecimal - prints an unsigned integer in base 16 (hexadecimal)
+ * @args: the va_list that contains the unsigned integer
+ * @uppercase: if true, print the hexadecimal in uppercase
+ *
+ * Return: the number of digits printed
+ */
+int print_hexadecimal(va_list args, int uppercase)
+{
+    unsigned int n = va_arg(args, unsigned int);
+    int digits = 0;
+    char hex_digits[16] = "0123456789abcdef";
+    int base = 16;
+
+    if (uppercase)
+    {
+        hex_digits[10] = 'A';
+        hex_digits[11] = 'B';
+        hex_digits[12] = 'C';
+        hex_digits[13] = 'D';
+        hex_digits[14] = 'E';
+        hex_digits[15] = 'F';
+    }
+
+    if (n / base)
+    {
+        digits += print_hexadecimal(args, uppercase);
+    }
+
+    _putchar(hex_digits[n % base]);
+    digits++;
+
+    return (digits);
+}
+
+/**
+ * print_hexadecimal_upper - prints an unsigned integer in base 16 (hexadecimal) in uppercase
+ * @args: the va_list that contains the unsigned integer
+ *
+ * Return: the number of digits printed
+ */
+int print_hexadecimal_upper(va_list args)
+{
+    return (print_hexadecimal(args, 1));
+}
