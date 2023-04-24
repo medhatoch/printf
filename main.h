@@ -38,10 +38,4 @@ int print_integer_helper(unsigned int num);
 /* Function for binary*/
 int print_binary(va_list args);
 
-/* Functions for printing unsigned integers */
-int print_unsigned(va_list args);
-int print_octal(va_list args);
-int print_hex(va_list args);
-int print_HEX(va_list args);
-
 #endif /* MAIN_H */
