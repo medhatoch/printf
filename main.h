@@ -35,4 +35,7 @@ int print_int(va_list args);
 int print_integer(va_list args);
 int print_integer_helper(unsigned int num);
 
+/* Function for binary*/
+int print_binary(va_list args);
+
 #endif /* MAIN_H */

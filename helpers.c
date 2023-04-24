@@ -125,3 +125,33 @@ int print_integer_helper(unsigned int num)
 
     return (digits);
 }
+
+/**
+ * print_binary - prints an unsigned int in binary format
+ * @args: the va_list containing the unsigned int to print
+ *
+ * Return: the number of digits printed
+ */
+int print_binary(va_list args)
+{
+    unsigned int num = va_arg(args, unsigned int);
+    int binary[32];
+    int i, j;
+
+    if (num == 0)
+    {
+        _putchar('0');
+        return (1);
+    }
+
+    for (i = 0; num > 0; i++)
+    {
+        binary[i] = num % 2;
+        num /= 2;
+    }
+
+    for (j = i - 1; j >= 0; j--)
+        _putchar(binary[j] + '0');
+
+    return (i);
+}
