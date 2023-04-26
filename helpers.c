@@ -1,6 +1,5 @@
 #include "main.h"
 #include <unistd.h>
-
 /**
  * print_char - prints a character
  * @args: list of arguments
@@ -9,9 +8,14 @@
  */
 int print_char(va_list args)
 {
+<<<<<<< HEAD
 	char c = va_arg(args, int);
 
 	return (_putchar(c));
+=======
+char c = va_arg(args, int);
+return (_putchar(c));
+>>>>>>> helper tab
 }
 
 /**
@@ -22,6 +26,7 @@ int print_char(va_list args)
  */
 int print_string(va_list args)
 {
+<<<<<<< HEAD
 	char *str = va_arg(args, char *);
 	int len = 0;
 
@@ -33,6 +38,18 @@ int print_string(va_list args)
 		str++;
 	}
 	return (len);
+=======
+char *str = va_arg(args, char *);
+int len = 0;
+if (!str)
+str = "(null)";
+while (*str)
+{
+len += _putchar(*str);
+str++;
+}
+return (len);
+>>>>>>> helper tab
 }
 
 /**
@@ -43,7 +60,11 @@ int print_string(va_list args)
  */
 int print_percent(__attribute__((unused)) va_list args)
 {
+<<<<<<< HEAD
 	return (_putchar('%'));
+=======
+return (_putchar('%'));
+>>>>>>> helper tab
 }
 
 /**
@@ -54,6 +75,7 @@ int print_percent(__attribute__((unused)) va_list args)
  */
 int print_integer(va_list args)
 {
+<<<<<<< HEAD
 	int n = va_arg(args, int);
 	int digits = 0;
 	unsigned int num;
@@ -78,6 +100,29 @@ int print_integer(va_list args)
 	digits++;
 
 	return (digits);
+=======
+int n = va_arg(args, int);
+int digits = 0;
+unsigned int num;
+
+if (n < 0)
+{
+_putchar('-');
+num = -n;
+digits++;
+}
+else
+{
+num = n;
+}
+if (num / 10)
+{
+digits += print_integer_helper(num / 10);
+}
+_putchar((num % 10) + '0');
+digits++;
+return (digits);
+>>>>>>> helper tab
 }
 
 /**
@@ -88,6 +133,7 @@ int print_integer(va_list args)
  */
 int print_decimal(va_list args)
 {
+<<<<<<< HEAD
 	int n = va_arg(args, int);
 	int digits = 0;
 
@@ -101,6 +147,18 @@ int print_decimal(va_list args)
 	digits += print_integer_helper(n);
 
 	return (digits);
+=======
+int n = va_arg(args, int);
+int digits = 0;
+if (n < 0)
+{
+_putchar('-');
+digits++;
+n = -n;
+}
+digits += print_integer_helper(n);
+return (digits);
+>>>>>>> helper tab
 }
 
 /**
@@ -112,6 +170,7 @@ int print_decimal(va_list args)
  */
 int print_integer_helper(unsigned int num)
 {
+<<<<<<< HEAD
 	int digits = 0;
 
 	if (num / 10)
@@ -123,6 +182,16 @@ int print_integer_helper(unsigned int num)
 	digits++;
 
     return (digits);
+=======
+int digits = 0;
+if (num / 10)
+{
+digits += print_integer_helper(num / 10);
+}
+_putchar((num % 10) + '0');
+digits++;
+return (digits);
+>>>>>>> helper tab
 }
 
 /**
@@ -133,26 +202,23 @@ int print_integer_helper(unsigned int num)
  */
 int print_binary(va_list args)
 {
-    unsigned int num = va_arg(args, unsigned int);
-    int binary[32];
-    int i, j;
+unsigned int num = va_arg(args, unsigned int);
+int binary[32];
+int i, j;
+if (num == 0)
+{
+_putchar('0');
+return (1);
+}
+for (i = 0; num > 0; i++)
+{
+binary[i] = num % 2;
+num /= 2;
+}
+for (j = i - 1; j >= 0; j--)
+_putchar(binary[j] + '0');
 
-    if (num == 0)
-    {
-        _putchar('0');
-        return (1);
-    }
-
-    for (i = 0; num > 0; i++)
-    {
-        binary[i] = num % 2;
-        num /= 2;
-    }
-
-    for (j = i - 1; j >= 0; j--)
-        _putchar(binary[j] + '0');
-
-    return (i);
+return (i);
 }
 
 /**
@@ -164,26 +230,25 @@ int print_binary(va_list args)
  */
 int print_unsigned_integer_helper(unsigned int num, unsigned int base)
 {
-    char digits[] = "0123456789abcdef";
-    char buffer[100];
-    int i = 0, j;
+char digits[] = "0123456789abcdef";
+char buffer[100];
+int i = 0, j;
+if (num == 0)
+{
+_putchar('0');
+return (1);
+}
 
-    if (num == 0)
-    {
-        _putchar('0');
-        return (1);
-    }
+while (num)
+{
+buffer[i++] = digits[num % base];
+num /= base;
+}
 
-    while (num)
-    {
-        buffer[i++] = digits[num % base];
-        num /= base;
-    }
+for (j = i - 1; j >= 0; j--)
+_putchar(buffer[j]);
 
-    for (j = i - 1; j >= 0; j--)
-        _putchar(buffer[j]);
-
-    return (i);
+return (i);
 }
 
 /**
@@ -194,12 +259,10 @@ int print_unsigned_integer_helper(unsigned int num, unsigned int base)
  */
 int print_unsigned_integer(va_list args)
 {
-    unsigned int n = va_arg(args, unsigned int);
-    int digits = 0;
-
-    digits += print_unsigned_integer_helper(n, 10);
-
-    return (digits);
+unsigned int n = va_arg(args, unsigned int);
+int digits = 0;
+digits += print_unsigned_integer_helper(n, 10);
+return (digits);
 }
 
 /**
@@ -210,26 +273,24 @@ int print_unsigned_integer(va_list args)
  */
 int print_octal(va_list args)
 {
-    unsigned int num = va_arg(args, unsigned int);
-    int octal[32];
-    int i, j;
+unsigned int num = va_arg(args, unsigned int);
+int octal[32];
+int i, j;
+if (num == 0)
+{
+_putchar('0');
+return (1);
+}
 
-    if (num == 0)
-    {
-        _putchar('0');
-        return (1);
-    }
+for (i = 0; num > 0; i++)
+{
+octal[i] = num % 8;
+ num /= 8;
+}
 
-    for (i = 0; num > 0; i++)
-    {
-        octal[i] = num % 8;
-        num /= 8;
-    }
-
-    for (j = i - 1; j >= 0; j--)
-        _putchar(octal[j] + '0');
-
-    return (i);
+for (j = i - 1; j >= 0; j--)
+_putchar(octal[j] + '0');
+return (i);
 }
 
 /**
@@ -240,31 +301,31 @@ int print_octal(va_list args)
  */
 int print_hex_lowercase(va_list args)
 {
-    unsigned int num = va_arg(args, unsigned int);
-    int hex[32];
-    int i, j;
+unsigned int num = va_arg(args, unsigned int);
+int hex[32];
+int i, j;
 
-    if (num == 0)
-    {
-        _putchar('0');
-        return (1);
-    }
+if (num == 0)
+{
+_putchar('0');
+return (1);
+}
 
-    for (i = 0; num > 0; i++)
-    {
-        hex[i] = num % 16;
-        num /= 16;
-    }
+for (i = 0; num > 0; i++)
+{
+hex[i] = num % 16;
+num /= 16;
+}
 
-    for (j = i - 1; j >= 0; j--)
-    {
-        if (hex[j] < 10)
-            _putchar(hex[j] + '0');
-        else
-            _putchar(hex[j] - 10 + 'a');
-    }
+for (j = i - 1; j >= 0; j--)
+{
+if (hex[j] < 10)
+_putchar(hex[j] + '0');
+else
+_putchar(hex[j] - 10 + 'a');
+}
 
-    return (i);
+return (i);
 }
 
 /**
@@ -275,29 +336,28 @@ int print_hex_lowercase(va_list args)
  */
 int print_hex_uppercase(va_list args)
 {
-    unsigned int num = va_arg(args, unsigned int);
-    int hex[32];
-    int i, j;
+unsigned int num = va_arg(args, unsigned int);
+int hex[32];
+int i, j;
 
-    if (num == 0)
-    {
-        _putchar('0');
-        return (1);
-    }
+if (num == 0)
+{
+_putchar('0');
+return (1);
+}
 
-    for (i = 0; num > 0; i++)
-    {
-        hex[i] = num % 16;
-        num /= 16;
-    }
+for (i = 0; num > 0; i++)
+{
+hex[i] = num % 16;
+num /= 16;
+}
 
-    for (j = i - 1; j >= 0; j--)
-    {
-        if (hex[j] < 10)
-            _putchar(hex[j] + '0');
-        else
-            _putchar(hex[j] - 10 + 'A');
-    }
-
-    return (i);
+for (j = i - 1; j >= 0; j--)
+{
+if (hex[j] < 10)
+_putchar(hex[j] + '0');
+else
+_putchar(hex[j] - 10 + 'A');
+}
+return (i);
 }
