@@ -46,7 +46,6 @@ int print_percent(__attribute__((unused)) va_list args)
     return (_putchar('%'));
 }
 
-
 /**
  * print_integer - prints an integer
  * @args: arguments list containing the integer to print
@@ -156,7 +155,6 @@ int print_binary(va_list args)
     return (i);
 }
 
-
 /**
  * print_unsigned_integer_helper - Prints an unsigned integer in a given base
  * @num: The unsigned integer to print
@@ -166,26 +164,26 @@ int print_binary(va_list args)
  */
 int print_unsigned_integer_helper(unsigned int num, unsigned int base)
 {
-        char digits[] = "0123456789abcdef";
-        char buffer[100];
-        int i = 0, j;
+    char digits[] = "0123456789abcdef";
+    char buffer[100];
+    int i = 0, j;
 
-        if (num == 0)
-        {
-                _putchar('0');
-                return (1);
-        }
+    if (num == 0)
+    {
+        _putchar('0');
+        return (1);
+    }
 
-        while (num)
-        {
-                buffer[i++] = digits[num % base];
-                num /= base;
-        }
+    while (num)
+    {
+        buffer[i++] = digits[num % base];
+        num /= base;
+    }
 
-        for (j = i - 1; j >= 0; j--)
-                _putchar(buffer[j]);
+    for (j = i - 1; j >= 0; j--)
+        _putchar(buffer[j]);
 
-        return (i);
+    return (i);
 }
 
 /**
