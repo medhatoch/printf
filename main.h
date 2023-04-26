@@ -37,4 +37,12 @@ int print_decimal(va_list args);
 
 /* Function for binary*/
 int print_binary(va_list args);
+
+/* Functions for printing unsigned integers */
+int print_unsigned_integer(va_list args);
+int print_octal(va_list args);
+int print_hex_lowercase(va_list args);
+int print_hex_uppercase(va_list args);
+
+
 #endif /* MAIN_H */
