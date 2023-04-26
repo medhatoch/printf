@@ -1,6 +1,4 @@
 #include "main.h"
-#include <stdarg.h>
-#include <stdlib.h>
 
 /**
  * _printf - produces output according to a format
@@ -12,7 +10,6 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	int i = 0, j = 0, len = 0;
-
 	format_t formats[] = {
 		{"c", print_char},
 		{"s", print_string},
@@ -48,12 +45,9 @@ int _printf(const char *format, ...)
 			}
 		}
 		else
-		{
 			len += _putchar(format[i]);
-		}
 		i++;
 	}
-
 	va_end(args);
 	return (len);
 }
