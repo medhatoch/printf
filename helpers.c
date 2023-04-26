@@ -303,4 +303,3 @@ int print_hex_uppercase(va_list args)
 
     return (i);
 }
-
