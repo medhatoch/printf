@@ -45,6 +45,4 @@ int print_hex_lowercase(va_list args);
 int print_hex_uppercase(va_list args);
 
 
-int _putchar_buf(char *buf, int i, char c);
-
 #endif /* MAIN_H */
