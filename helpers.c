@@ -43,7 +43,7 @@ int print_string(va_list args)
  */
 int print_percent(__attribute__((unused)) va_list args)
 {
-    return (_putchar('%'));
+	return (_putchar('%'));
 }
 
 /**
@@ -54,30 +54,30 @@ int print_percent(__attribute__((unused)) va_list args)
  */
 int print_integer(va_list args)
 {
-    int n = va_arg(args, int);
-    int digits = 0;
-    unsigned int num;
+	int n = va_arg(args, int);
+	int digits = 0;
+	unsigned int num;
 
-    if (n < 0)
-    {
-        _putchar('-');
-        num = -n;
-        digits++;
-    }
-    else
-    {
-        num = n;
-    }
+	if (n < 0)
+	{
+		_putchar('-');
+		num = -n;
+		digits++;
+	}
+	else
+	{
+		num = n;
+	}
 
-    if (num / 10)
-    {
-        digits += print_integer_helper(num / 10);
-    }
+	if (num / 10)
+	{
+		digits += print_integer_helper(num / 10);
+	}
 
-    _putchar((num % 10) + '0');
-    digits++;
+	_putchar((num % 10) + '0');
+	digits++;
 
-    return (digits);
+	return (digits);
 }
 
 /**
@@ -88,19 +88,19 @@ int print_integer(va_list args)
  */
 int print_decimal(va_list args)
 {
-    int n = va_arg(args, int);
-    int digits = 0;
+	int n = va_arg(args, int);
+	int digits = 0;
 
-    if (n < 0)
-    {
-        _putchar('-');
-        digits++;
-        n = -n;
-    }
+	if (n < 0)
+	{
+		_putchar('-');
+		digits++;
+		n = -n;
+	}
 
-    digits += print_integer_helper(n);
+	digits += print_integer_helper(n);
 
-    return (digits);
+	return (digits);
 }
 
 /**
@@ -112,15 +112,15 @@ int print_decimal(va_list args)
  */
 int print_integer_helper(unsigned int num)
 {
-    int digits = 0;
+	int digits = 0;
 
-    if (num / 10)
-    {
-        digits += print_integer_helper(num / 10);
-    }
+	if (num / 10)
+	{
+		digits += print_integer_helper(num / 10);
+	}
 
-    _putchar((num % 10) + '0');
-    digits++;
+	_putchar((num % 10) + '0');
+	digits++;
 
     return (digits);
 }
