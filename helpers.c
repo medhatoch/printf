@@ -9,9 +9,9 @@
  */
 int print_char(va_list args)
 {
-    char c = va_arg(args, int);
+	char c = va_arg(args, int);
 
-    return (_putchar(c));
+	return (_putchar(c));
 }
 
 /**
@@ -22,17 +22,17 @@ int print_char(va_list args)
  */
 int print_string(va_list args)
 {
-    char *str = va_arg(args, char *);
-    int len = 0;
+	char *str = va_arg(args, char *);
+	int len = 0;
 
-    if (!str)
-        str = "(null)";
-    while (*str)
-    {
-        len += _putchar(*str);
-        str++;
-    }
-    return (len);
+	if (!str)
+		str = "(null)";
+	while (*str)
+	{
+		len += _putchar(*str);
+		str++;
+	}
+	return (len);
 }
 
 /**
