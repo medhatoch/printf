@@ -15,6 +15,9 @@ typedef struct format_t
         int (*f)(va_list);
 } format_t;
 
+int parse_format_string(const char *format, va_list args);
+
+
 /* putchar function */
 int _putchar(char c);
 
