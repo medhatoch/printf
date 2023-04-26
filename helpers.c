@@ -304,3 +304,21 @@ int print_hex_uppercase(va_list args)
     return (i);
 }
 
+/**
+ * _putchar_buf - writes a character to a buffer
+ * @buf: buffer to write to
+ * @i: current position in buffer
+ * @c: character to write
+ *
+ * Return: 1
+ */
+int _putchar_buf(char *buf, int i, char c)
+{
+    if (i >= 1024)
+    {
+        write(1, buf, i);
+        return (0);
+    }
+    buf[i] = c;
+    return (1);
+}
